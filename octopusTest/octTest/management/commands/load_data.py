@@ -10,7 +10,7 @@ DATETIME_FORMAT = '%Y%m%d%H%M%S'
 LOADED_ERROR_MESSAGE = """ If you need to reload the data from csv file, please delete the sqlite file 
 and then run  'python manage.py migrate' to create new database with table"""
 NEM13_FORMAT_ERROR_MESSAGE = "File received does not have NEM13 data"
-FILES_PATH='../../../files'
+FILES_PATH='./files'
 class Command(BaseCommand):
     # Show this when the user types help
     help = "Loads data from the csv"
@@ -25,7 +25,7 @@ class Command(BaseCommand):
         else:
             file_names = os.listdir(FILES_PATH)
         for each in file_names:
-            f=open(str(FILES_PATH+each))
+            f=open(str(FILES_PATH+'/'+each))
             file_data = f.readlines()
             if 'NEM13' not in file_data[0]:
                 print("wrong file format.. exiting")
