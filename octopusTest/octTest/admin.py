@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import bill
+
+@admin.register(bill)
+class billAdmin(admin.ModelAdmin):
+    list_display = ["NMI","serial","readingValue","date","fileName"]
+    search_fields = ("NMI","serial")
